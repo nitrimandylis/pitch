@@ -13,14 +13,24 @@
     margin: 4rem auto;
     padding: 0 1.5rem;
   }
-  h1 { font-size: 1rem; font-weight: 600; text-transform: uppercase; letter-spacing: .08em; }
+  h1 { font-size: 1rem; font-weight: 600; text-transform: uppercase; letter-spacing: .08em; margin: 0; }
+  header { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-bottom: 1.5rem; }
+  .by { display: flex; align-items: center; gap: .5rem; opacity: .5; font-size: .8rem; }
   ul { list-style: none; padding: 0; }
   li { padding: .5rem 0; border-bottom: 1px solid color-mix(in srgb, currentColor 20%, transparent); }
   a { color: inherit; }
+  .seal {
+    width: 28px; aspect-ratio: 427 / 406; background: currentColor;
+    -webkit-mask: url(assets/seal.svg) no-repeat center / contain;
+    mask: url(assets/seal.svg) no-repeat center / contain;
+  }
 </style>
 </head>
 <body>
+<header>
 <h1>pitches</h1>
+<span class="by"><span class="seal" aria-hidden="true"></span> by nick trimandylis</span>
+</header>
 <ul>
 <!-- pitches: newest first, one <li> per site -->
 <li><a href="flight-001/">flight-001</a> &mdash; hackathon season crew recruit</li>
