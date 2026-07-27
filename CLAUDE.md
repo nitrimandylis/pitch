@@ -27,24 +27,27 @@ Every pitch ends with the seal mark and a line of attribution. It is the only
 thing shared across pitches, so it is the one signal that they come from the
 same person.
 
+Paste the whole contents of `assets/seal.svg` inline, adding
+`class="seal" aria-hidden="true"` to its opening `<svg>` tag:
+
 ```html
 <footer class="colophon">
-  <span class="seal" aria-hidden="true"></span> built by nick trimandylis
+  <svg class="seal" aria-hidden="true" ...>…</svg> built by nick trimandylis
 </footer>
 ```
 
 ```css
 .colophon { display: flex; align-items: center; gap: .6rem; opacity: .5; }
-.seal {
-  width: 32px; aspect-ratio: 427 / 406; background: currentColor;
-  -webkit-mask: url(../assets/seal.svg) no-repeat center / contain;
-  mask: url(../assets/seal.svg) no-repeat center / contain;
-}
+.seal { width: 32px; height: auto; flex: none; }
 ```
 
-- It is a **mask**, not an `<img>`. That is what makes it take each pitch's own
-  text colour instead of shipping a second asset per theme.
-- Path is `../assets/seal.svg` from a pitch folder, `assets/seal.svg` from root.
+- **Inline, not `<img>` and not `mask-image`.** Inline is the only form where
+  `fill="currentColor"` picks up the pitch's own text colour. An external SVG
+  used as a CSS mask silently fails over `file://`, which is exactly how every
+  pitch gets reviewed before it ships, so it would look fine live and broken
+  in review.
+- `assets/seal.svg` is the source of truth. Copy from it, never hand-edit the
+  copy pasted into a page.
 - Keep it at 28-40px. It is traced line art and turns to mush below ~24px.
 - Do not restyle it per pitch beyond size and opacity. Sameness is the point.
 
