@@ -48,6 +48,12 @@ Paste the whole contents of `assets/seal.svg` inline, adding
   in review.
 - `assets/seal.svg` is the source of truth. Copy from it, never hand-edit the
   copy pasted into a page.
+- To retune it: `python3 make_mask.py && python3 make_svg.py` in `assets/`,
+  then re-paste into every page that carries it. `TONE` sets how far off the
+  head sits from the line colour, `TONE_HI` where head-grey ends and the
+  sweater's knit lines begin. Raise `TONE_HI` and the knit detail comes back.
+  Traced from `assets/avatar-hi.png`, the GitHub avatar. Needs pillow, numpy
+  and scikit-image.
 - Keep it at 28-40px. It is traced line art and turns to mush below ~24px.
 - Do not restyle it per pitch beyond size and opacity. Sameness is the point.
 
