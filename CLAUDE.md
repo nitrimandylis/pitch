@@ -7,7 +7,7 @@ Static pitch sites, one folder each, served by GitHub Pages from `main`.
 ```
 index.html          root listing, one <li> per pitch under the marker comment
 <slug>/index.html   the pitch site, single file, no build step
-<slug>/og.png       optional 1200x1200 link-preview image
+<slug>/og.png       1200x1200 link-preview image, generated on every build
 <slug>/tokens.css   optional, if hallmark emits a token file
 .hallmark/log.json  hallmark's theme rotation memory, shared across all pitches
 ```
