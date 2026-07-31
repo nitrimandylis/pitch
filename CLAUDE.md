@@ -13,6 +13,11 @@ assets/seal.svg     the seal mark, shared by every pitch, see Colophon below
 .hallmark/log.json  hallmark's theme rotation memory, shared across all pitches
 ```
 
+`.hallmark/log.json` is **committed on purpose.** It records the macrostructure,
+theme and enrichment each pitch used, and hallmark reads it before picking so no
+two pitches come out looking alike. Untrack it and a fresh clone loses that
+memory, which is how the pitches start converging on one template.
+
 Live at `https://nitrimandylis.github.io/pitch/<slug>/`.
 
 ## Adding a pitch

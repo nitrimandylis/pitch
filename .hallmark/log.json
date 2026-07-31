@@ -1,3 +1,17 @@
 [
-  { "date": "2026-07-24", "macrostructure": "Stat-Led", "theme": "Sport", "enrichment": "none", "brief": "flight-001 season pitch · informational explainer, pros/cons, no CTA" }
+  {
+    "date": "2026-07-31",
+    "macrostructure": "Letter",
+    "theme": "studied-DNA (amtf.gr)",
+    "enrichment": "none",
+    "brief": "amtf-2026 · concept-site pitch to a friend on the organising team · deadpan",
+    "theme_axes": "dark paper / heavy grotesk-sans / cool blue #61a7ee"
+  },
+  {
+    "date": "2026-07-24",
+    "macrostructure": "Stat-Led",
+    "theme": "Sport",
+    "enrichment": "none",
+    "brief": "flight-001 season pitch · informational explainer, pros/cons, no CTA"
+  }
 ]
