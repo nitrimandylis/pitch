@@ -6,6 +6,7 @@ Static pitch sites, one folder each, served by GitHub Pages from `main`.
 
 ```
 index.html          root listing, one <li> per pitch under the marker comment
+favicon.svg         the tab mark, shared by every pitch, see Favicon below
 assets/seal.svg     the seal mark, shared by every pitch, see Colophon below
 <slug>/index.html   the pitch site, single file, no build step
 <slug>/og.png       1200x1200 link-preview image, generated on every build
@@ -25,6 +26,32 @@ Live at `https://nitrimandylis.github.io/pitch/<slug>/`.
 Use the `pitch` skill (`/pitch`). It interviews, builds with hallmark, then asks
 before pushing. Do not hand-write pitch sites here; the skill exists so the
 grilling happens.
+
+## Favicon
+
+Every pitch carries the same tab mark. One line in `<head>`, right after the
+`<title>`:
+
+```html
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+```
+
+`../` because Pages serves this repo under `/pitch/`, so a root-absolute
+`/favicon.svg` would point at the user site instead. The root `index.html`
+uses `favicon.svg` with no prefix.
+
+- **It is not the seal.** The seal is traced line art and turns to mush below
+  ~24px, which is where a favicon lives. The tab gets an ink tile with a paper
+  `nt` monogram instead, and the seal stays in the colophon.
+- Glyph outlines are **baked into a path**. A favicon does not get to load a
+  webfont, so `<text>` would render in whatever the browser chose, or nothing.
+- It inverts under `prefers-color-scheme: dark` so it survives dark browser
+  chrome.
+- To retune: `python3 make_favicon.py` in `assets/`. `WEIGHT`, `X_HEIGHT` and
+  `TRACKING` were set by eye at 16px, which is the size that decides it —
+  lighter or tighter and the `n` and `t` merge into one blob. Needs fonttools.
+- SVG only, no `.ico` fallback. Every browser that matters supports it, and a
+  second raster copy is a second thing to keep in sync.
 
 ## Colophon
 
