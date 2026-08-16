@@ -17,7 +17,7 @@
 ![build step](https://img.shields.io/badge/build_step-none-0B3D91?style=flat-square&labelColor=111111)
 ![dependencies](https://img.shields.io/badge/dependencies-0-E4321F?style=flat-square&labelColor=111111)
 ![js frameworks](https://img.shields.io/badge/js_frameworks-0-0B3D91?style=flat-square&labelColor=111111)
-![pitches shipped](https://img.shields.io/badge/pitches_shipped-1-E4321F?style=flat-square&labelColor=111111)
+![deploy time](https://img.shields.io/badge/deploy_time-~30s-E4321F?style=flat-square&labelColor=111111)
 
 </div>
 
