@@ -1,10 +1,20 @@
 [
   {
+    "date": "2026-08-27",
+    "macrostructure": "Split Studio",
+    "theme": "Carnival",
+    "enrichment": "none",
+    "brief": "uni-lineage \u00b7 UCL and Loughborough student histories side by side, no verdict \u00b7 deadpan \u00b7 duo-tone, one ink per institution",
+    "theme_axes": "light warm paper / display-heavy grotesk / duo-tone oxblood + ochre",
+    "nav": "N3",
+    "footer": "Ft2"
+  },
+  {
     "date": "2026-08-16",
     "macrostructure": "Catalogue",
     "theme": "Newsprint",
     "enrichment": "none",
-    "brief": "five-dinners · five Athens dinners compared for one birthday evening · dry, factual",
+    "brief": "five-dinners \u00b7 five Athens dinners compared for one birthday evening \u00b7 dry, factual",
     "theme_axes": "light paper / roman-serif / cool steel-blue",
     "nav": "N6",
     "footer": "Ft4"
@@ -14,7 +24,7 @@
     "macrostructure": "Letter",
     "theme": "studied-DNA (amtf.gr)",
     "enrichment": "none",
-    "brief": "amtf-2026 · concept-site pitch to a friend on the organising team · deadpan",
+    "brief": "amtf-2026 \u00b7 concept-site pitch to a friend on the organising team \u00b7 deadpan",
     "theme_axes": "dark paper / heavy grotesk-sans / cool blue #61a7ee"
   },
   {
@@ -22,6 +32,6 @@
     "macrostructure": "Stat-Led",
     "theme": "Sport",
     "enrichment": "none",
-    "brief": "flight-001 season pitch · informational explainer, pros/cons, no CTA"
+    "brief": "flight-001 season pitch \u00b7 informational explainer, pros/cons, no CTA"
   }
 ]
