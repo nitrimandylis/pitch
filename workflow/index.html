@@ -173,6 +173,43 @@ code {
 
 .seal { width: 32px; height: auto; flex: none; }
 
+/* ---- the graph --------------------------------------------------------- */
+
+#graph { display: block; width: 100%; height: auto; cursor: default; }
+
+#graph .edge line, #graph .edge path { stroke-width: 1; transition: stroke-opacity .15s; }
+#graph .edge-label { font: 400 9px/1 "Geist Mono", ui-monospace, monospace; pointer-events: none; opacity: 0; transition: opacity .15s; }
+
+#graph .node rect { transition: opacity .15s; cursor: pointer; }
+#graph .node text { transition: opacity .15s; pointer-events: none; }
+
+#graph.hover .edge line, #graph.hover .edge path { stroke-opacity: .06 !important; }
+#graph.hover .edge-label { opacity: .06 !important; }
+#graph.hover .node rect { opacity: .2 !important; }
+#graph.hover .node text { opacity: .2 !important; }
+
+#graph.hover .edge.on line, #graph.hover .edge.on path { stroke-opacity: .45 !important; }
+#graph.hover .edge.on .edge-label { opacity: 1 !important; }
+#graph.hover .node.on rect { opacity: 1 !important; }
+#graph.hover .node.on text { opacity: 1 !important; }
+
+/* info box shown on hover */
+#graph-info {
+  position: absolute; bottom: 16px; right: 16px;
+  background: var(--paper-2); border: 1px solid var(--rule); border-radius: 6px;
+  padding: 12px 16px; max-width: 280px;
+  font-size: 13px; color: var(--ink);
+  opacity: 0; transition: opacity .15s; pointer-events: none;
+}
+#graph-info.visible { opacity: 1; }
+#graph-info .info-name { font-weight: 600; margin-bottom: 4px; }
+#graph-info .info-desc { color: var(--muted); font-size: 12px; margin-bottom: 8px; }
+#graph-info .info-edges { font: 400 11px/1.6 "Geist Mono", ui-monospace, monospace; color: var(--muted); }
+
+@media (max-width: 720px) {
+  #graph-info { display: none; }
+}
+
 @media (max-width: 720px) {
   body { padding: 24px 16px 48px; }
   table, thead, tbody, tr, td { display: block; width: 100%; }
@@ -231,7 +268,7 @@ code {
   <text x="64" y="432" font-family="Geist, sans-serif" font-size="20" font-weight="500" fill="#4a3a30">one harness.</text>
 
   <text x="64" y="552" font-family="Geist Mono, monospace" font-size="12"
-        fill="#4a3a30" fill-opacity=".58">31 skills · 8 CLIs · 10 MCP · 4 cron</text>
+        fill="#4a3a30" fill-opacity=".58">30 skills · 8 CLIs · 8 MCP · 4 cron</text>
 
   <!-- ================= right two-thirds: the spine ================= -->
 
@@ -250,7 +287,7 @@ code {
     <rect x="612" y="144" width="280" height="56" rx="6" fill="#e7dbca" stroke="#4a3a30" stroke-opacity=".16"/>
     <text x="628" y="170" font-family="Geist Mono, monospace" font-size="10" letter-spacing="1.2" fill="#4a3a30" fill-opacity=".30">L1</text>
     <text x="628" y="188" font-size="15" font-weight="600" fill="#4a3a30">skills</text>
-    <text x="876" y="180" text-anchor="end" font-family="Geist Mono, monospace" font-size="13" fill="#4a3a30" fill-opacity=".58">31</text>
+    <text x="876" y="180" text-anchor="end" font-family="Geist Mono, monospace" font-size="13" fill="#4a3a30" fill-opacity=".58">30</text>
 
     <!-- L2 CLIs -->
     <rect x="612" y="208" width="280" height="56" rx="6" fill="#efe4d5" stroke="#4a3a30" stroke-opacity=".16"/>
@@ -262,7 +299,7 @@ code {
     <rect x="612" y="272" width="280" height="56" rx="6" fill="#e7dbca" stroke="#4a3a30" stroke-opacity=".16"/>
     <text x="628" y="298" font-family="Geist Mono, monospace" font-size="10" letter-spacing="1.2" fill="#4a3a30" fill-opacity=".30">L3</text>
     <text x="628" y="316" font-size="15" font-weight="600" fill="#4a3a30">MCP</text>
-    <text x="876" y="308" text-anchor="end" font-family="Geist Mono, monospace" font-size="13" fill="#4a3a30" fill-opacity=".58">10</text>
+    <text x="876" y="308" text-anchor="end" font-family="Geist Mono, monospace" font-size="13" fill="#4a3a30" fill-opacity=".58">8</text>
 
     <!-- L4 cron -->
     <rect x="612" y="336" width="280" height="56" rx="6" fill="#efe4d5" stroke="#4a3a30" stroke-opacity=".16"/>
@@ -315,17 +352,17 @@ code {
 <tbody>
 
 <tr>
-  <td class="layer"><span class="tag">L1</span><span class="name">skills</span><span class="count">31</span></td>
+  <td class="layer"><span class="tag">L1</span><span class="name">skills</span><span class="count">30</span></td>
   <td data-loop="academic loop">
     <p class="fam"><span class="fam-name">writing · 3</span><code>academic-voice, humanizer, writing-style</code></p>
     <p class="fam"><span class="fam-name">notion · 6</span><code>assignments, cas, gp-examples, greek-portfolio, scene-bank, side-quests</code></p>
     <p class="fam"><span class="fam-name">documents · 4</span><code>docx, pdf, pptx, xlsx</code></p>
-    <p class="fam"><span class="fam-name">coursework · 4</span><code>aidetect-cli, bacpack-cli, math-notes, ytx</code></p>
+    <p class="fam"><span class="fam-name">coursework · 5</span><code>aidetect-cli, bacpack-cli, math-notes, rm-handwrite, ytx</code></p>
   </td>
   <td data-loop="developer loop">
     <p class="fam"><span class="fam-name">ship &amp; publish · 6</span><code>publish-repo, write-readme, license-public-repos, shipping-clis, update-docs, pitch</code></p>
     <p class="fam"><span class="fam-name">build &amp; design · 3</span><code>flask-vercel, emil-design-eng, startup-research</code></p>
-    <p class="fam"><span class="fam-name">machine &amp; repos · 5</span><code>dovetail-cli, shelf-cli, supacode-cli, supacode-deeplinks, notion-coding-projects</code></p>
+    <p class="fam"><span class="fam-name">machine &amp; repos · 3</span><code>dovetail-cli, shelf-cli, notion-coding-projects</code></p>
   </td>
 </tr>
 
@@ -336,9 +373,9 @@ code {
 </tr>
 
 <tr>
-  <td class="layer"><span class="tag">L3</span><span class="name">MCP</span><span class="count">10</span></td>
-  <td data-loop="academic loop"><code>Notion, Gmail, Google Calendar, Google Drive, reMarkable</code></td>
-  <td data-loop="developer loop"><code>Vercel, Playwright, Context7, drawio, Excalidraw</code></td>
+  <td class="layer"><span class="tag">L3</span><span class="name">MCP</span><span class="count">8</span></td>
+  <td data-loop="academic loop"><code>Notion, Things, Gmail, Google Calendar, Google Drive, reMarkable</code></td>
+  <td data-loop="developer loop"><code>Playwright, t3-code</code></td>
 </tr>
 
 <tr>
@@ -356,9 +393,361 @@ code {
 </tbody>
 </table>
 
+<!-- ====================================================================== -->
+<!-- The graph. Every tool with a data-flow connection, positioned by hand.  -->
+<!-- Hover a node to trace what it touches. Without JS: static diagram.     -->
+<!-- ====================================================================== -->
+
+<p class="lede" style="margin-top: 56px;">How the pieces connect.</p>
+<p class="lede-sub">22 tools, 27 data flows. Every arrow is a real pipe. Hover a node to trace its edges.</p>
+
+<div class="card-wrap" style="position: relative; overflow: visible;">
+<svg id="graph" viewBox="0 0 1120 700" width="1120" height="700"
+     xmlns="http://www.w3.org/2000/svg" role="img"
+     aria-label="Interactive graph: 22 tools connected by 27 data flows, grouped by domain.">
+
+  <rect width="1120" height="700" fill="#efe4d5"/>
+
+  <!-- domain labels -->
+  <text x="100" y="60" font-family="Geist Mono, monospace" font-size="10" letter-spacing="1.2" fill="#4a3a30" fill-opacity=".20" text-transform="uppercase">STUDY</text>
+  <text x="830" y="60" font-family="Geist Mono, monospace" font-size="10" letter-spacing="1.2" fill="#4a3a30" fill-opacity=".20">CODE</text>
+  <text x="250" y="468" font-family="Geist Mono, monospace" font-size="10" letter-spacing="1.2" fill="#4a3a30" fill-opacity=".20">COMMS</text>
+  <text x="860" y="458" font-family="Geist Mono, monospace" font-size="10" letter-spacing="1.2" fill="#4a3a30" fill-opacity=".20">MUSIC</text>
+  <text x="450" y="510" font-family="Geist Mono, monospace" font-size="10" letter-spacing="1.2" fill="#4a3a30" fill-opacity=".20">DASHBOARD + THEMING</text>
+
+  <!-- ================= edges ================= -->
+  <g id="edges" fill="none" stroke="#4a3a30">
+
+    <!-- T3 Code → Claude Code -->
+    <g class="edge" data-s="t3-code" data-t="claude-code">
+      <line x1="680" y1="220" x2="560" y2="330" stroke-opacity=".18"/>
+      <text class="edge-label" x="610" y="268" fill="#4a3a30" fill-opacity=".50" text-anchor="middle">dev surface</text>
+    </g>
+
+    <!-- Claude Code → GitHub -->
+    <g class="edge" data-s="claude-code" data-t="github">
+      <line x1="604" y1="320" x2="800" y2="170" stroke-opacity=".18"/>
+      <text class="edge-label" x="710" y="236" fill="#4a3a30" fill-opacity=".50" text-anchor="middle">commits</text>
+    </g>
+
+    <!-- Claude Code → Notion -->
+    <g class="edge" data-s="claude-code" data-t="notion">
+      <line x1="476" y1="335" x2="338" y2="340" stroke-opacity=".18"/>
+      <text class="edge-label" x="408" y="328" fill="#4a3a30" fill-opacity=".50" text-anchor="middle">tracking</text>
+    </g>
+
+    <!-- Claude Code → Things 3 -->
+    <g class="edge" data-s="claude-code" data-t="things">
+      <line x1="490" y1="315" x2="420" y2="255" stroke-opacity=".18"/>
+      <text class="edge-label" x="448" y="278" fill="#4a3a30" fill-opacity=".50" text-anchor="middle">tasks</text>
+    </g>
+
+    <!-- Claude Code ↔ reMarkable (bidirectional) -->
+    <g class="edge" data-s="claude-code" data-t="remarkable">
+      <path d="M 480,345 Q 320,400 210,440" stroke-opacity=".18"/>
+      <text class="edge-label" x="340" y="384" fill="#4a3a30" fill-opacity=".50" text-anchor="middle">notebooks / OCR</text>
+    </g>
+
+    <!-- Google Calendar → Claude Code -->
+    <g class="edge" data-s="calendar" data-t="claude-code">
+      <path d="M 200,230 Q 360,290 480,330" stroke-opacity=".18"/>
+      <text class="edge-label" x="330" y="272" fill="#4a3a30" fill-opacity=".50" text-anchor="middle">schedule</text>
+    </g>
+
+    <!-- ManageBac → bacpack -->
+    <g class="edge" data-s="managebac" data-t="bacpack">
+      <line x1="185" y1="110" x2="268" y2="170" stroke-opacity=".18"/>
+      <text class="edge-label" x="218" y="134" fill="#4a3a30" fill-opacity=".50" text-anchor="middle">assignments</text>
+    </g>
+
+    <!-- bacpack → Claude Code -->
+    <g class="edge" data-s="bacpack" data-t="claude-code">
+      <line x1="352" y1="185" x2="490" y2="320" stroke-opacity=".18"/>
+      <text class="edge-label" x="412" y="246" fill="#4a3a30" fill-opacity=".50" text-anchor="middle">pipes data</text>
+    </g>
+
+    <!-- Claude Code → Discord -->
+    <g class="edge" data-s="claude-code" data-t="discord">
+      <line x1="510" y1="355" x2="400" y2="500" stroke-opacity=".18"/>
+      <text class="edge-label" x="448" y="432" fill="#4a3a30" fill-opacity=".50" text-anchor="middle">deliver</text>
+    </g>
+
+    <!-- GitHub → Vercel -->
+    <g class="edge" data-s="github" data-t="vercel">
+      <line x1="878" y1="155" x2="952" y2="110" stroke-opacity=".18"/>
+      <text class="edge-label" x="920" y="126" fill="#4a3a30" fill-opacity=".50" text-anchor="middle">deploy</text>
+    </g>
+
+    <!-- config-autopush → GitHub -->
+    <g class="edge" data-s="config-autopush" data-t="github">
+      <path d="M 960,430 Q 920,300 870,180" stroke-opacity=".18"/>
+      <text class="edge-label" x="900" y="310" fill="#4a3a30" fill-opacity=".50" text-anchor="middle">dotfiles</text>
+    </g>
+
+    <!-- dovetail → GitHub -->
+    <g class="edge" data-s="dovetail" data-t="github">
+      <line x1="958" y1="245" x2="878" y2="175" stroke-opacity=".18"/>
+      <text class="edge-label" x="924" y="204" fill="#4a3a30" fill-opacity=".50" text-anchor="middle">dotfiles</text>
+    </g>
+
+    <!-- ManageBac → siren (long arc above) -->
+    <g class="edge" data-s="managebac" data-t="siren">
+      <path d="M 185,90 Q 530,20 838,330" stroke-opacity=".18"/>
+      <text class="edge-label" x="500" y="46" fill="#4a3a30" fill-opacity=".50" text-anchor="middle">watches</text>
+    </g>
+
+    <!-- siren → Discord (arc below Claude Code) -->
+    <g class="edge" data-s="siren" data-t="discord">
+      <path d="M 838,350 Q 620,460 410,505" stroke-opacity=".18"/>
+      <text class="edge-label" x="630" y="436" fill="#4a3a30" fill-opacity=".50" text-anchor="middle">alerts</text>
+    </g>
+
+    <!-- siren → ntfy -->
+    <g class="edge" data-s="siren" data-t="ntfy">
+      <path d="M 838,355 Q 540,500 260,555" stroke-opacity=".18"/>
+      <text class="edge-label" x="540" y="480" fill="#4a3a30" fill-opacity=".50" text-anchor="middle">alerts</text>
+    </g>
+
+    <!-- siren → Notion (arc below Claude Code) -->
+    <g class="edge" data-s="siren" data-t="notion">
+      <path d="M 838,345 Q 560,430 338,345" stroke-opacity=".18"/>
+      <text class="edge-label" x="590" y="404" fill="#4a3a30" fill-opacity=".50" text-anchor="middle">sync</text>
+    </g>
+
+    <!-- jukebox → Cider -->
+    <g class="edge" data-s="jukebox" data-t="cider">
+      <line x1="898" y1="495" x2="822" y2="520" stroke-opacity=".18"/>
+      <text class="edge-label" x="866" y="500" fill="#4a3a30" fill-opacity=".50" text-anchor="middle">controls</text>
+    </g>
+
+    <!-- Cider → nocturne -->
+    <g class="edge" data-s="cider" data-t="nocturne">
+      <line x1="822" y1="530" x2="898" y2="560" stroke-opacity=".18"/>
+      <text class="edge-label" x="866" y="538" fill="#4a3a30" fill-opacity=".50" text-anchor="middle">audio</text>
+    </g>
+
+    <!-- Cider → glance -->
+    <g class="edge" data-s="cider" data-t="glance">
+      <line x1="756" y1="525" x2="606" y2="545" stroke-opacity=".18"/>
+      <text class="edge-label" x="680" y="528" fill="#4a3a30" fill-opacity=".50" text-anchor="middle">now-playing</text>
+    </g>
+
+    <!-- swatch → Ghostty -->
+    <g class="edge" data-s="swatch" data-t="ghostty">
+      <line x1="478" y1="630" x2="660" y2="625" stroke-opacity=".18"/>
+      <text class="edge-label" x="570" y="620" fill="#4a3a30" fill-opacity=".50" text-anchor="middle">theme</text>
+    </g>
+
+    <!-- swatch → T3 Code (arc left) -->
+    <g class="edge" data-s="swatch" data-t="t3-code">
+      <path d="M 440,610 Q 500,400 660,225" stroke-opacity=".18"/>
+      <text class="edge-label" x="520" y="420" fill="#4a3a30" fill-opacity=".50" text-anchor="middle">theme</text>
+    </g>
+
+    <!-- swatch → Cider -->
+    <g class="edge" data-s="swatch" data-t="cider">
+      <path d="M 478,620 Q 630,590 756,530" stroke-opacity=".18"/>
+      <text class="edge-label" x="620" y="584" fill="#4a3a30" fill-opacity=".50" text-anchor="middle">theme</text>
+    </g>
+
+    <!-- Ghostty → fastfetch -->
+    <g class="edge" data-s="ghostty" data-t="fastfetch">
+      <line x1="660" y1="635" x2="616" y2="670" stroke-opacity=".18"/>
+      <text class="edge-label" x="644" y="658" fill="#4a3a30" fill-opacity=".50" text-anchor="middle">active theme</text>
+    </g>
+
+    <!-- Notion → glance -->
+    <g class="edge" data-s="notion" data-t="glance">
+      <path d="M 318,355 Q 430,470 556,540" stroke-opacity=".18"/>
+      <text class="edge-label" x="420" y="468" fill="#4a3a30" fill-opacity=".50" text-anchor="middle">widgets</text>
+    </g>
+
+    <!-- GitHub → glance -->
+    <g class="edge" data-s="github" data-t="glance">
+      <path d="M 830,180 Q 740,370 590,540" stroke-opacity=".18"/>
+      <text class="edge-label" x="720" y="370" fill="#4a3a30" fill-opacity=".50" text-anchor="middle">heatmap</text>
+    </g>
+
+    <!-- siren → glance -->
+    <g class="edge" data-s="siren" data-t="glance">
+      <path d="M 838,360 Q 730,470 600,540" stroke-opacity=".18"/>
+      <text class="edge-label" x="730" y="452" fill="#4a3a30" fill-opacity=".50" text-anchor="middle">status</text>
+    </g>
+
+  </g>
+
+  <!-- ================= nodes ================= -->
+  <g id="nodes" font-family="Geist, sans-serif" font-size="13" font-weight="600">
+
+    <!-- hub -->
+    <g class="node" data-id="claude-code" data-desc="The integration layer, every tool routes through it">
+      <rect x="476" y="314" width="128" height="32" rx="6" fill="#d97757" fill-opacity=".08" stroke="#d97757" stroke-width="1.2"/>
+      <text x="540" y="335" text-anchor="middle" fill="#4a3a30">Claude Code</text>
+    </g>
+
+    <!-- study -->
+    <g class="node" data-id="managebac" data-desc="School assignments and deadlines">
+      <rect x="75" y="84" width="110" height="30" rx="6" fill="#e7dbca" stroke="#4a3a30" stroke-opacity=".16"/>
+      <text x="130" y="104" text-anchor="middle" fill="#4a3a30">ManageBac</text>
+    </g>
+    <g class="node" data-id="bacpack" data-desc="ManageBac CLI, reads and writes to MB">
+      <rect x="268" y="164" width="84" height="30" rx="6" fill="#e7dbca" stroke="#4a3a30" stroke-opacity=".16"/>
+      <text x="310" y="184" text-anchor="middle" fill="#4a3a30">bacpack</text>
+    </g>
+    <g class="node" data-id="calendar" data-desc="DP2 timetable, static until April">
+      <rect x="60" y="214" width="140" height="30" rx="6" fill="#e7dbca" stroke="#4a3a30" stroke-opacity=".16"/>
+      <text x="130" y="234" text-anchor="middle" fill="#4a3a30">Google Calendar</text>
+    </g>
+    <g class="node" data-id="notion" data-desc="Source of truth: assignments, projects, logs">
+      <rect x="262" y="326" width="76" height="30" rx="6" fill="#e7dbca" stroke="#4a3a30" stroke-opacity=".16"/>
+      <text x="300" y="346" text-anchor="middle" fill="#4a3a30">Notion</text>
+    </g>
+    <g class="node" data-id="things" data-desc="Daily tasks, manual allocation">
+      <rect x="358" y="236" width="84" height="30" rx="6" fill="#e7dbca" stroke="#4a3a30" stroke-opacity=".16"/>
+      <text x="400" y="256" text-anchor="middle" fill="#4a3a30">Things 3</text>
+    </g>
+    <g class="node" data-id="remarkable" data-desc="Study notes and generated notebooks">
+      <rect x="108" y="426" width="104" height="30" rx="6" fill="#e7dbca" stroke="#4a3a30" stroke-opacity=".16"/>
+      <text x="160" y="446" text-anchor="middle" fill="#4a3a30">reMarkable</text>
+    </g>
+
+    <!-- code -->
+    <g class="node" data-id="t3-code" data-desc="Primary dev surface, chat and worktrees">
+      <rect x="638" y="206" width="84" height="30" rx="6" fill="#e7dbca" stroke="#4a3a30" stroke-opacity=".16"/>
+      <text x="680" y="226" text-anchor="middle" fill="#4a3a30">T3 Code</text>
+    </g>
+    <g class="node" data-id="github" data-desc="Code repos and CI via GitHub Actions">
+      <rect x="802" y="150" width="76" height="30" rx="6" fill="#e7dbca" stroke="#4a3a30" stroke-opacity=".16"/>
+      <text x="840" y="170" text-anchor="middle" fill="#4a3a30">GitHub</text>
+    </g>
+    <g class="node" data-id="vercel" data-desc="Auto-deploy on push">
+      <rect x="954" y="90" width="72" height="30" rx="6" fill="#e7dbca" stroke="#4a3a30" stroke-opacity=".16"/>
+      <text x="990" y="110" text-anchor="middle" fill="#4a3a30">Vercel</text>
+    </g>
+    <g class="node" data-id="siren" data-desc="5 cron watchers on GitHub Actions">
+      <rect x="838" y="326" width="64" height="30" rx="6" fill="#e7dbca" stroke="#4a3a30" stroke-opacity=".16"/>
+      <text x="870" y="346" text-anchor="middle" fill="#4a3a30">siren</text>
+    </g>
+    <g class="node" data-id="config-autopush" data-desc="Pushes dotfiles to GitHub at 22:00">
+      <rect x="922" y="420" width="136" height="30" rx="6" fill="#e7dbca" stroke="#4a3a30" stroke-opacity=".16"/>
+      <text x="990" y="440" text-anchor="middle" fill="#4a3a30">config-autopush</text>
+    </g>
+    <g class="node" data-id="dovetail" data-desc="Config backup to GitHub at noon">
+      <rect x="958" y="236" width="84" height="30" rx="6" fill="#e7dbca" stroke="#4a3a30" stroke-opacity=".16"/>
+      <text x="1000" y="256" text-anchor="middle" fill="#4a3a30">dovetail</text>
+    </g>
+
+    <!-- comms -->
+    <g class="node" data-id="discord" data-desc="SIGIL server: alerts, deliveries, files to phone">
+      <rect x="330" y="492" width="80" height="30" rx="6" fill="#e7dbca" stroke="#4a3a30" stroke-opacity=".16"/>
+      <text x="370" y="512" text-anchor="middle" fill="#4a3a30">Discord</text>
+    </g>
+    <g class="node" data-id="ntfy" data-desc="Alert redundancy, fires alongside Discord">
+      <rect x="200" y="542" width="60" height="30" rx="6" fill="#e7dbca" stroke="#4a3a30" stroke-opacity=".16"/>
+      <text x="230" y="562" text-anchor="middle" fill="#4a3a30">ntfy</text>
+    </g>
+
+    <!-- music -->
+    <g class="node" data-id="cider" data-desc="Apple Music player, port 10767">
+      <rect x="756" y="510" width="66" height="30" rx="6" fill="#e7dbca" stroke="#4a3a30" stroke-opacity=".16"/>
+      <text x="789" y="530" text-anchor="middle" fill="#4a3a30">Cider</text>
+    </g>
+    <g class="node" data-id="jukebox" data-desc="Terminal music control via Cider API">
+      <rect x="898" y="480" width="84" height="30" rx="6" fill="#e7dbca" stroke="#4a3a30" stroke-opacity=".16"/>
+      <text x="940" y="500" text-anchor="middle" fill="#4a3a30">jukebox</text>
+    </g>
+    <g class="node" data-id="nocturne" data-desc="Music visualizer, system audio tap">
+      <rect x="898" y="548" width="88" height="30" rx="6" fill="#e7dbca" stroke="#4a3a30" stroke-opacity=".16"/>
+      <text x="942" y="568" text-anchor="middle" fill="#4a3a30">nocturne</text>
+    </g>
+
+    <!-- dashboard + theming -->
+    <g class="node" data-id="glance" data-desc="10-widget dashboard, read-only pinned tab">
+      <rect x="536" y="532" width="72" height="30" rx="6" fill="#e7dbca" stroke="#4a3a30" stroke-opacity=".16"/>
+      <text x="572" y="552" text-anchor="middle" fill="#4a3a30">glance</text>
+    </g>
+    <g class="node" data-id="swatch" data-desc="21 surfaces themed from one palette.toml">
+      <rect x="402" y="616" width="76" height="30" rx="6" fill="#e7dbca" stroke="#4a3a30" stroke-opacity=".16"/>
+      <text x="440" y="636" text-anchor="middle" fill="#4a3a30">swatch</text>
+    </g>
+    <g class="node" data-id="ghostty" data-desc="Dashboard terminal, libghostty">
+      <rect x="660" y="616" width="80" height="30" rx="6" fill="#e7dbca" stroke="#4a3a30" stroke-opacity=".16"/>
+      <text x="700" y="636" text-anchor="middle" fill="#4a3a30">Ghostty</text>
+    </g>
+    <g class="node" data-id="fastfetch" data-desc="System info with theme-colored seal">
+      <rect x="524" y="662" width="92" height="30" rx="6" fill="#e7dbca" stroke="#4a3a30" stroke-opacity=".16"/>
+      <text x="570" y="682" text-anchor="middle" fill="#4a3a30">fastfetch</text>
+    </g>
+
+  </g>
+</svg>
+
+<div id="graph-info">
+  <div class="info-name"></div>
+  <div class="info-desc"></div>
+  <div class="info-edges"></div>
+</div>
+</div>
+
+<script>
+(function() {
+  var g = document.getElementById('graph');
+  var info = document.getElementById('graph-info');
+  var nodes = g.querySelectorAll('.node');
+  var edges = g.querySelectorAll('.edge');
+
+  function activate(id) {
+    g.classList.add('hover');
+    var node = g.querySelector('.node[data-id="' + id + '"]');
+    if (node) node.classList.add('on');
+    var connected = [];
+    edges.forEach(function(e) {
+      if (e.dataset.s === id || e.dataset.t === id) {
+        e.classList.add('on');
+        var other = e.dataset.s === id ? e.dataset.t : e.dataset.s;
+        var otherNode = g.querySelector('.node[data-id="' + other + '"]');
+        if (otherNode) otherNode.classList.add('on');
+        var label = e.querySelector('.edge-label');
+        var otherName = otherNode ? otherNode.querySelector('text').textContent : other;
+        var dir = e.dataset.s === id ? '→' : '←';
+        connected.push(dir + ' ' + otherName + ' (' + (label ? label.textContent : '') + ')');
+      }
+    });
+    if (node) {
+      info.querySelector('.info-name').textContent = node.querySelector('text').textContent;
+      info.querySelector('.info-desc').textContent = node.dataset.desc || '';
+      info.querySelector('.info-edges').innerHTML = connected.join('<br>');
+      info.classList.add('visible');
+    }
+  }
+
+  function deactivate() {
+    g.classList.remove('hover');
+    g.querySelectorAll('.on').forEach(function(el) { el.classList.remove('on'); });
+    info.classList.remove('visible');
+  }
+
+  nodes.forEach(function(node) {
+    node.addEventListener('mouseenter', function() { activate(node.dataset.id); });
+    node.addEventListener('mouseleave', deactivate);
+    node.addEventListener('click', function(e) {
+      e.stopPropagation();
+      if (node.classList.contains('on') && g.classList.contains('hover')) {
+        deactivate();
+      } else {
+        deactivate();
+        activate(node.dataset.id);
+      }
+    });
+  });
+
+  document.addEventListener('click', deactivate);
+})();
+</script>
+
 <div class="notes">
   <p><strong>The harness itself is one repo.</strong> 48 skills and a 135-file memory store, versioned privately. Six of those skills serve neither loop because they <em>are</em> the harness: the planning protocol, the interview, the capture sweep, the cloud dispatch.</p>
-  <p><strong>Where it runs.</strong> T3 Code for chat, Supacode for worktrees, Ghostty for shell work. All three are libghostty, so one palette carries across every surface.</p>
+  <p><strong>Where it runs.</strong> T3 Code for everything, Ghostty for the dashboard. Both are libghostty, so one palette carries across every surface.</p>
   <p><strong>What is not here.</strong> Nine CLIs that serve the desk rather than either loop, and six launchd jobs behind them. They are the reason the machine is pleasant, not the reason the work ships.</p>
 </div>
 
