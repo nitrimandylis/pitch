@@ -19,7 +19,7 @@ theme and enrichment each pitch used, and hallmark reads it before picking so no
 two pitches come out looking alike. Untrack it and a fresh clone loses that
 memory, which is how the pitches start converging on one template.
 
-Live at `https://nitrimandylis.github.io/pitch/<slug>/`.
+Live at `https://pitch.nicktrim.com/<slug>/`.
 
 ## Adding a pitch
 

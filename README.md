@@ -45,7 +45,7 @@ nick@pitch:~$ /pitch
 [?] who exactly reads this. names, not "people interested in x"
 [?] three real objections. strawmen do not count.
 [✓] flight-001/index.html — 15kb, zero dependencies, zero external js
-[i] live in ~30s at nitrimandylis.github.io/pitch/flight-001/
+[i] live in ~30s at pitch.nicktrim.com/flight-001/
 ```
 
 ## 🔥 The interview
